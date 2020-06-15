@@ -1029,8 +1029,8 @@
     },
     "Data/1.0.0": {
       "type": "project",
-      "path": "../EFTest/Data.csproj",
-      "msbuildProject": "../EFTest/Data.csproj"
+      "path": "../Data/Data.csproj",
+      "msbuildProject": "../Data/Data.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -1045,11 +1045,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\la-jbergs\\source\\repos\\EFTest\\WebSite\\WebSite.csproj",
+      "projectUniqueName": "C:\\Users\\la-jbergs\\source\\repos\\GameRatings\\WebSite\\WebSite.csproj",
       "projectName": "WebSite",
-      "projectPath": "C:\\Users\\la-jbergs\\source\\repos\\EFTest\\WebSite\\WebSite.csproj",
+      "projectPath": "C:\\Users\\la-jbergs\\source\\repos\\GameRatings\\WebSite\\WebSite.csproj",
       "packagesPath": "C:\\Users\\la-jbergs\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\la-jbergs\\source\\repos\\EFTest\\WebSite\\obj\\",
+      "outputPath": "C:\\Users\\la-jbergs\\source\\repos\\GameRatings\\WebSite\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\la-jbergs\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1065,8 +1065,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\la-jbergs\\source\\repos\\EFTest\\EFTest\\Data.csproj": {
-              "projectPath": "C:\\Users\\la-jbergs\\source\\repos\\EFTest\\EFTest\\Data.csproj"
+            "C:\\Users\\la-jbergs\\source\\repos\\GameRatings\\Data\\Data.csproj": {
+              "projectPath": "C:\\Users\\la-jbergs\\source\\repos\\GameRatings\\Data\\Data.csproj"
             }
           }
         }

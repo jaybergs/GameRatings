@@ -1,27 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\la-jbergs\\source\\repos\\EFTest\\WebSite\\WebSite.csproj": {}
+    "C:\\Users\\la-jbergs\\source\\repos\\GameRatings\\WebSite\\WebSite.csproj": {}
   },
   "projects": {
-    "C:\\Users\\la-jbergs\\source\\repos\\EFTest\\EFTest\\Data.csproj": {
+    "C:\\Users\\la-jbergs\\source\\repos\\GameRatings\\Data\\Data.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\la-jbergs\\source\\repos\\EFTest\\EFTest\\Data.csproj",
+        "projectUniqueName": "C:\\Users\\la-jbergs\\source\\repos\\GameRatings\\Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "C:\\Users\\la-jbergs\\source\\repos\\EFTest\\EFTest\\Data.csproj"
+        "projectPath": "C:\\Users\\la-jbergs\\source\\repos\\GameRatings\\Data\\Data.csproj"
       },
       "frameworks": {
         "net472": {}
       }
     },
-    "C:\\Users\\la-jbergs\\source\\repos\\EFTest\\WebSite\\WebSite.csproj": {
+    "C:\\Users\\la-jbergs\\source\\repos\\GameRatings\\WebSite\\WebSite.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\la-jbergs\\source\\repos\\EFTest\\WebSite\\WebSite.csproj",
+        "projectUniqueName": "C:\\Users\\la-jbergs\\source\\repos\\GameRatings\\WebSite\\WebSite.csproj",
         "projectName": "WebSite",
-        "projectPath": "C:\\Users\\la-jbergs\\source\\repos\\EFTest\\WebSite\\WebSite.csproj",
+        "projectPath": "C:\\Users\\la-jbergs\\source\\repos\\GameRatings\\WebSite\\WebSite.csproj",
         "packagesPath": "C:\\Users\\la-jbergs\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\la-jbergs\\source\\repos\\EFTest\\WebSite\\obj\\",
+        "outputPath": "C:\\Users\\la-jbergs\\source\\repos\\GameRatings\\WebSite\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\la-jbergs\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -37,8 +37,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\la-jbergs\\source\\repos\\EFTest\\EFTest\\Data.csproj": {
-                "projectPath": "C:\\Users\\la-jbergs\\source\\repos\\EFTest\\EFTest\\Data.csproj"
+              "C:\\Users\\la-jbergs\\source\\repos\\GameRatings\\Data\\Data.csproj": {
+                "projectPath": "C:\\Users\\la-jbergs\\source\\repos\\GameRatings\\Data\\Data.csproj"
               }
             }
           }
