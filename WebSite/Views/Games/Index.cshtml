@@ -1,0 +1,61 @@
+﻿@model IList<Data.Models.Games>
+
+<h1 align="center">GameRatings</h1>
+<br />
+<form action="" method="post">
+    <p aling="center">
+        <input type="text" size="20" name="search" value="@ViewData["search"].ToString()" />
+        <input type="submit" value="search" />
+    </p>
+    <table align="center" border="1" cellpadding="5">
+        <tr>
+            <th>
+                Name <button name="orderName" asp-controller="Games" asp-action="Index" value="nameasc">▲</button>
+                <button name="orderName" asp-controller="Games" asp-action="Index" value="namedesc">▼</button>
+            </th>
+            <th>Genre</th>
+            <th>Developer</th>
+            <th>
+                Publisher <button name="orderName" asp-controller="Games" asp-action="Index" value="publisherasc">▲</button>
+                <button name="orderName" asp-controller="Games" asp-action="Index" value="publisherdesc">▼</button>
+            </th>
+            <th style="white-space:nowrap;">
+                Rating <button name="orderName" asp-controller="Games" asp-action="Index" value="ratingasc">▲</button>
+                <button name="orderName" asp-controller="Games" asp-action="Index" value="ratingdesc">▼</button>
+            </th>
+        </tr>
+        @foreach (var gms in Model)
+        {
+            int i = 0;
+            <tr>
+                <td>@gms.Name</td>
+                <td>
+                    @foreach (var gnr in gms.Genres)
+                    {
+                        @gnr.Name
+                        if (i < gms.Genres.Count - 1)
+                        {
+                            @Html.Raw(", ")
+                        }
+                        i++;
+                    }
+                </td>
+                <td>
+                    @{i = 0;
+                    }
+                    @foreach (var dev in gms.Developers)
+                    {
+                        @dev.Name
+                        if (i < gms.Developers.Count - 1)
+                        {
+                            @Html.Raw(", ")
+                        }
+                        i++;
+                    }
+                </td>
+                <td>@gms.Publisher.Name</td>
+                <td>@gms.Rating.Score</td>
+            </tr>
+        }
+    </table>
+</form>

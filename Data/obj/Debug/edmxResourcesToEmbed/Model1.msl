@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GameRatingsModelStoreContainer" CdmEntityContainer="GameRatingsEntities">
+    <EntitySetMapping Name="Developer">
+      <EntityTypeMapping TypeName="GameRatingsModel.Developer">
+        <MappingFragment StoreEntitySet="Developer">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Games">
+      <EntityTypeMapping TypeName="GameRatingsModel.Games">
+        <MappingFragment StoreEntitySet="Games">
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Publisher" ColumnName="Publisher" />
+          <ScalarProperty Name="PubYear" ColumnName="PubYear" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Genre">
+      <EntityTypeMapping TypeName="GameRatingsModel.Genre">
+        <MappingFragment StoreEntitySet="Genre">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Publisher">
+      <EntityTypeMapping TypeName="GameRatingsModel.Publisher">
+        <MappingFragment StoreEntitySet="Publisher">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rating">
+      <EntityTypeMapping TypeName="GameRatingsModel.Rating">
+        <MappingFragment StoreEntitySet="Rating">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Rating1" ColumnName="Rating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Games_Developer" TypeName="GameRatingsModel.Games_Developer" StoreEntitySet="Games_Developer">
+      <EndProperty Name="Developer">
+        <ScalarProperty Name="ID" ColumnName="ID_Developer" />
+      </EndProperty>
+      <EndProperty Name="Games">
+        <ScalarProperty Name="ID" ColumnName="ID_Games" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Games_Genre" TypeName="GameRatingsModel.Games_Genre" StoreEntitySet="Games_Genre">
+      <EndProperty Name="Games">
+        <ScalarProperty Name="ID" ColumnName="ID_Games" />
+      </EndProperty>
+      <EndProperty Name="Genre">
+        <ScalarProperty Name="ID" ColumnName="ID_Genre" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="Platform">
+      <EntityTypeMapping TypeName="GameRatingsModel.Platform">
+        <MappingFragment StoreEntitySet="Platform">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Games_Platform" TypeName="GameRatingsModel.Games_Platform" StoreEntitySet="Games_Platform">
+      <EndProperty Name="Platform">
+        <ScalarProperty Name="ID" ColumnName="ID_Platform" />
+      </EndProperty>
+      <EndProperty Name="Games">
+        <ScalarProperty Name="ID" ColumnName="ID_Games" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="Links">
+      <EntityTypeMapping TypeName="GameRatingsModel.Links">
+        <MappingFragment StoreEntitySet="Links">
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

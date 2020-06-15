@@ -1,0 +1,12 @@
+C:\Users\la-jbergs\source\repos\EFTest\EFTest\bin\Debug\EFTest.exe.config
+C:\Users\la-jbergs\source\repos\EFTest\EFTest\bin\Debug\EFTest.exe
+C:\Users\la-jbergs\source\repos\EFTest\EFTest\bin\Debug\EFTest.pdb
+C:\Users\la-jbergs\source\repos\EFTest\EFTest\bin\Debug\EntityFramework.dll
+C:\Users\la-jbergs\source\repos\EFTest\EFTest\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\la-jbergs\source\repos\EFTest\EFTest\bin\Debug\EntityFramework.xml
+C:\Users\la-jbergs\source\repos\EFTest\EFTest\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\la-jbergs\source\repos\EFTest\EFTest\obj\Debug\EFTest.csprojAssemblyReference.cache
+C:\Users\la-jbergs\source\repos\EFTest\EFTest\obj\Debug\EFTest.csproj.CoreCompileInputs.cache
+C:\Users\la-jbergs\source\repos\EFTest\EFTest\obj\Debug\EFTest.csproj.CopyComplete
+C:\Users\la-jbergs\source\repos\EFTest\EFTest\obj\Debug\EFTest.exe
+C:\Users\la-jbergs\source\repos\EFTest\EFTest\obj\Debug\EFTest.pdb
