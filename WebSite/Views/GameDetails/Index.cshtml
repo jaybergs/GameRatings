@@ -1,0 +1,19 @@
+﻿@model Data.Models.Games
+
+<div class="wrapper">
+    <div>
+        <h2>@Model.Name</h2>
+    </div>
+    <div class="score">
+        <b>@Model.Rating.Score</b><br />
+    </div>
+    <div>
+        @Model.Description
+    </div>
+    <div>
+        <img src="@Url.Content(ViewData["img"].ToString())" runat="server" width="200" height="300"/>
+    </div>
+    <div>
+        <a href="@Model.Link.Link">Mehr Informationen</a>
+    </div>
+</div>

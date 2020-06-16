@@ -31,7 +31,6 @@ namespace Data.Models
             Developers = new HashSet<Developers>();
             Genres = new HashSet<Genres>();
             Platforms = new HashSet<Platforms>();
-            
         }
     }
 }

@@ -11,6 +11,7 @@ namespace WebSite.Controllers
     {
         [BindProperty]
         public string orderName { get; set; }
+
         public IActionResult Index()
         {
             using (var db = new GameRatingsDbContext())
@@ -37,21 +38,27 @@ namespace WebSite.Controllers
                     case "nameasc":
                         games = games.OrderBy(g => g.Name).ToList();
                         break;
+
                     case "namedesc":
                         games = games.OrderByDescending(g => g.Name).ToList();
                         break;
+
                     case "publisherasc":
                         games = games.OrderBy(g => g.Publisher.Name).ToList();
                         break;
+
                     case "publisherdesc":
                         games = games.OrderByDescending(g => g.Publisher.Name).ToList();
                         break;
+
                     case "ratingasc":
                         games = games.OrderBy(g => g.Rating.Score).ToList();
                         break;
+
                     case "ratingdesc":
                         games = games.OrderByDescending(g => g.Rating.Score).ToList();
                         break;
+
                     default:
                         games = games.OrderBy(g => g.Name).ToList();
                         break;
@@ -72,6 +79,7 @@ namespace WebSite.Controllers
 
         [BindProperty]
         public string search { get; set; }
+
         public void OnPost()
         {
         }

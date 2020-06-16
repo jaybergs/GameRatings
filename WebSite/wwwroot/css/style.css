@@ -6,3 +6,30 @@ button {
     background-color: white;
     color: darkgray;
 }
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 60% 30%;
+    grid-gap: 2em;
+    align-items: center;
+}
+
+.wrapper > div {
+    /*border: 1px solid black;*/
+}
+
+.score {
+    font-size: 2em;
+    width: 45px;
+    text-align: center;
+    background-color: green;
+    color: white;
+}
+
+a {
+    color: unset
+}
+
+a:hover {
+    color: darkred;
+}

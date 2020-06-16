@@ -8,7 +8,7 @@ namespace Data.Models
         [Column("ID")]
         public int ID { get; set; }
 
-        public string Name { get; set; }
+        public string Link { get; set; }
         public virtual ICollection<Games> Games { get; set; }
 
         public Links()

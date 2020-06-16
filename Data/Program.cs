@@ -1,8 +1,8 @@
-﻿using Data.Utilities;
+﻿using Data.Interfaces;
 using Data.Models;
+using Data.Utilities;
 using System;
 using System.Collections.Generic;
-using Data.Interfaces;
 
 namespace Data
 {
