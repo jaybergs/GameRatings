@@ -23,10 +23,26 @@
                     i++;
                 }
             }
-            <input type="text" name="developers" value="@developers" />
+            <input type="text" name="developers" value="@developers" /> (Einträge durch ';' trennen)
             <br />
             Publisher:
             <input type="text" name="publisher" value="@Model.Publisher.Name" />
+            <br />
+            @{
+                string genres = "";
+                i = 0;
+                foreach (var gen in Model.Genres)
+                {
+                    genres += gen.Name;
+                    if (i < Model.Genres.Count - 1)
+                    {
+                        genres += ";";
+                    }
+                    i++;
+                }
+            }
+            Genre: 
+            <input type="text" name="genres" value="@genres" />
             <br /><br />
             <textarea name="description" maxlength="800" cols="80" rows="8">@Model.Description</textarea>
         </div>

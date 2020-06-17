@@ -48,20 +48,32 @@ namespace WebSite.Controllers
             }
         }
 
-        public IActionResult SaveChanges(string name, int score, string developers, string publisher, string description)
+        public IActionResult SaveChanges(string name, int score, string developers, string publisher, string genres, string description)
         {
-            IList<string> devs = developers.Split(';').ToList();
+            Validation(publisher);
+            Validation(developers);
+            Validation(description);
+            Validation(genres);
+            IList<string> devsList = developers.Split(';').ToList();
+            IList<string> genresList = genres.Split(';').ToList();
             using (var db = new GameRatingsDbContext())
             {
                 if (!db.Publisher.Any(p => p.Name == publisher))
                 {
                     db.Publisher.Add(new Publishers(publisher));
                 }
-                foreach(string dev in devs)
+                foreach(string dev in devsList)
                 {
                     if (!db.Developer.Any(d => d.Name == dev))
                     {
                         db.Developer.Add(new Developers(dev));
+                    }
+                }
+                foreach(string gen in genresList)
+                {
+                    if (!db.Genre.Any(g => g.Name == gen))
+                    {
+                        db.Genre.Add(new Genres(gen));
                     }
                 }
                 db.SaveChanges();
@@ -73,7 +85,7 @@ namespace WebSite.Controllers
                                      where pub.Name == publisher
                                      select pub.ID).SingleOrDefault();
                 IList<Developers> newDevs = new List<Developers>();
-                foreach (string dev in devs)
+                foreach (string dev in devsList)
                 {
                     newDevs.Add((from d in db.Developer
                                  where d.Name == dev
@@ -81,10 +93,27 @@ namespace WebSite.Controllers
                 }
                 game.Developers.Clear();
                 game.Developers = newDevs;
+                IList<Genres> newGenres = new List<Genres>();
+                foreach (string gen in genresList)
+                {
+                    newGenres.Add((from g in db.Genre
+                                   where g.Name == gen
+                                   select g).SingleOrDefault());
+                }
+                game.Genres.Clear();
+                game.Genres = newGenres;
                 game.Description = description;
                 db.SaveChanges();
             }
             return RedirectToAction("Index", "GameDetails", new { name = name });
+        }
+
+        public void Validation(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+            {
+                throw new ArgumentOutOfRangeException("Input must not be null or white space or empty.");
+            }
         }
     }
 }

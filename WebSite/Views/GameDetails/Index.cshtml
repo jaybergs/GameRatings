@@ -23,6 +23,20 @@
         }
         <br />
         Publisher: @Model.Publisher.Name
+        <br />
+        Genre:
+        @{ 
+            i = 0;
+            foreach (var gen in Model.Genres)
+            {
+                @gen.Name
+                if (i < Model.Genres.Count - 1)
+                {
+                    @Html.Raw(", ")
+                }
+                i++;
+            }
+        }
         <br /><br />
         @Model.Description
     </div>
