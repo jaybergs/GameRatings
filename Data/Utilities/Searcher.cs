@@ -97,6 +97,31 @@ namespace Data.Utilities
             return games;
         }
 
+        public IList<Publishers> GetPublishers()
+        {
+            return db.Publisher.ToList();
+        }
+
+        public IList<Developers> GetDevelopers()
+        {
+            return db.Developer.ToList();
+        }
+
+        public IList<Genres> GetGenres()
+        {
+            return db.Genre.ToList();
+        }
+
+        public IList<Platforms> GetPlatforms()
+        {
+            return db.Platform.ToList();
+        }
+
+        public IList<Links> GetLinks()
+        {
+            return db.Links.ToList();
+        }
+
         private void Validation(string search)
         {
             if (string.IsNullOrWhiteSpace(search))

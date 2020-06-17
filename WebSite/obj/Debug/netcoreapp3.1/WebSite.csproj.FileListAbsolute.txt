@@ -107,3 +107,4 @@ C:\Users\la-jbergs\source\repos\GameRatings\WebSite\obj\Debug\netcoreapp3.1\stat
 C:\Users\la-jbergs\source\repos\GameRatings\WebSite\obj\Debug\netcoreapp3.1\staticwebassets\WebSite.StaticWebAssets.xml
 C:\Users\la-jbergs\source\repos\GameRatings\WebSite\obj\Debug\netcoreapp3.1\WebSite.genruntimeconfig.cache
 C:\Users\la-jbergs\source\repos\GameRatings\WebSite\obj\Debug\netcoreapp3.1\Razor\Views\GameDetails\Index.cshtml.g.cs
+C:\Users\la-jbergs\source\repos\GameRatings\WebSite\obj\Debug\netcoreapp3.1\Razor\Views\GameDetails\Edit.cshtml.g.cs

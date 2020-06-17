@@ -13,5 +13,11 @@ namespace Data.Models
         {
             Games = new HashSet<Games>();
         }
+
+        public Publishers(string name)
+        {
+            Games = new HashSet<Games>();
+            Name = name;
+        }
     }
 }

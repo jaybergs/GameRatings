@@ -8,6 +8,22 @@
         <b>@Model.Rating.Score</b><br />
     </div>
     <div>
+        Developer:
+        @{
+            int i = 0;
+            foreach (var dev in Model.Developers)
+            {
+                @dev.Name
+                if (i < Model.Developers.Count - 1)
+                {
+                    @Html.Raw(", ");
+                }
+                i++;
+            }
+        }
+        <br />
+        Publisher: @Model.Publisher.Name
+        <br /><br />
         @Model.Description
     </div>
     <div>
@@ -15,5 +31,8 @@
     </div>
     <div>
         <a href="@Model.Link.Link">Mehr Informationen</a>
+    </div>
+    <div>
+        <a href="GameDetails/Edit?name=@Model.Name">Edit</a>
     </div>
 </div>

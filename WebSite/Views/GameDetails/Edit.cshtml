@@ -1,0 +1,44 @@
+﻿@model Data.Models.Games
+
+<form method="post">
+    <div class="wrapper">
+        <div>
+            <h2>@Model.Name</h2>
+        </div>
+        <div class="score">
+            <b><input type="text" size="1" name="score" value="@Model.Rating.Score" /></b><br />
+        </div>
+        <div>
+            Developer:
+            @{
+                string developers = "";
+                int i = 0;
+                foreach (var dev in Model.Developers)
+                {
+                    developers += dev.Name;
+                    if (i < Model.Developers.Count - 1)
+                    {
+                        developers += ";";
+                    }
+                    i++;
+                }
+            }
+            <input type="text" name="developers" value="@developers" />
+            <br />
+            Publisher:
+            <input type="text" name="publisher" value="@Model.Publisher.Name" />
+            <br /><br />
+            <textarea name="description" maxlength="800" cols="80" rows="8">@Model.Description</textarea>
+        </div>
+        <div>
+            <img src="@Url.Content(ViewData["img"].ToString())" runat="server" width="200" height="300" />
+        </div>
+        <div>
+            <a href="@Model.Link.Link">Mehr Informationen</a>
+        </div>
+        <div>
+            <input type="hidden" name="name" value="@Model.Name" />
+            <Button name="saveChanges" asp-controller="GameDetails" asp-action="SaveChanges">Änderungen speichern</Button> 
+        </div>
+    </div>
+</form>
