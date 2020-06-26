@@ -1,4 +1,4 @@
-﻿@model Data.Models.Games
+﻿@model GamesViewModel
 
 <form method="post">
     <div class="wrapper">
@@ -6,51 +6,48 @@
             <h2>@Model.Name</h2>
         </div>
         <div class="score">
-            <b><input type="text" size="1" name="score" value="@Model.Rating.Score" /></b><br />
+            @Html.TextBoxFor(m => m.Score)<br />
         </div>
         <div>
-            Developer:
-            @{
-                string developers = "";
-                int i = 0;
-                foreach (var dev in Model.Developers)
+            <b>Developer</b>
+            <hr />
+            @Html.TextBoxFor(m => m.Developers, new { list = "devs" }) (Einträge durch ';' trennen)
+            <datalist id="devs">
+                @foreach (string dev in Model.DevList)
                 {
-                    developers += dev.Name;
-                    if (i < Model.Developers.Count - 1)
-                    {
-                        developers += ";";
-                    }
-                    i++;
+                    <option>@dev</option>
                 }
-            }
-            <input type="text" name="developers" value="@developers" /> (Einträge durch ';' trennen)
-            <br />
-            Publisher:
-            <input type="text" name="publisher" value="@Model.Publisher.Name" />
-            <br />
-            @{
-                string genres = "";
-                i = 0;
-                foreach (var gen in Model.Genres)
-                {
-                    genres += gen.Name;
-                    if (i < Model.Genres.Count - 1)
-                    {
-                        genres += ";";
-                    }
-                    i++;
-                }
-            }
-            Genre: 
-            <input type="text" name="genres" value="@genres" />
+            </datalist>
             <br /><br />
-            <textarea name="description" maxlength="800" cols="80" rows="8">@Model.Description</textarea>
+            <b>Publisher</b>
+            <hr />
+            @Html.TextBoxFor(m => m.Publisher, new { list = "publishers"})
+            <datalist id="publishers">
+                @foreach (string publisher in Model.PublisherList)
+                {
+                    <option>@publisher</option>
+                }
+            </datalist>
+            <br /><br />
+            <b>Genre</b>
+            <hr />
+            @Html.TextBoxFor(m => m.Genres, new { list = "genres"}) (Einträge durch ';' trennen)
+            <datalist id="genres">
+                @foreach (string genre in Model.GenreList)
+                {
+                    <option>@genre</option>
+                }
+            </datalist>
+            <br /><br />
+            <b>Beschreibung</b>
+            <hr /><br />
+            @Html.TextAreaFor(m => m.Description, new { style = "width:500px; height:150px" })
         </div>
         <div>
             <img src="@Url.Content(ViewData["img"].ToString())" runat="server" width="200" height="300" />
         </div>
         <div>
-            <a href="@Model.Link.Link">Mehr Informationen</a>
+            <a href="@Model.Link">Mehr Informationen</a>
         </div>
         <div>
             <input type="hidden" name="name" value="@Model.Name" />

@@ -15,5 +15,11 @@ namespace Data.Models
         {
             Games = new HashSet<Games>();
         }
+
+        public Links(string link)
+        {
+            Games = new HashSet<Games>();
+            this.Link = link;
+        }
     }
 }

@@ -3,6 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Configuration;
+using WebSite.Savers;
+using WebSite.Searchers;
+using WebSite.Validators;
 
 namespace WebSite
 {
@@ -19,6 +23,11 @@ namespace WebSite
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddTransient<IBaseValidator, BaseValidator>();
+            services.AddTransient<ISaverNewRecords, SaverNewRecords>();
+            services.AddTransient<ISaverGames, SaverGames>();
+            services.AddTransient<ISaverNewGames, SaverNewGames>();
+            services.AddTransient<ISearcherAllRecords, SearcherAllRecords>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

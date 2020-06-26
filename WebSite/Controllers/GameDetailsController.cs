@@ -3,13 +3,32 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using WebSite.Models;
+using WebSite.Savers;
+using WebSite.Validators;
 
 namespace WebSite.Controllers
 {
     public class GameDetailsController : Controller
     {
+        private readonly IBaseValidator stringValidator;
+        private readonly ISaverNewRecords saverNewRecords;
+        private readonly ISaverGames saverGames;
+
+        public GameDetailsController(IBaseValidator stringValidator, ISaverNewRecords saverNewRecords, ISaverGames saverGames)
+        {
+            this.stringValidator = stringValidator ?? throw new ArgumentNullException(nameof(stringValidator));
+            this.saverNewRecords = saverNewRecords ?? throw new ArgumentNullException(nameof(saverNewRecords));
+            this.saverGames = saverGames ?? throw new ArgumentNullException(nameof(saverGames));
+        }
+
         public IActionResult Index(string name)
         {
+            if (!this.stringValidator.Validate(name))
+            {
+                RedirectToAction("Index");
+            }
+            
             using (var db = new GameRatingsDbContext())
             {
                 db.Configuration.LazyLoadingEnabled = false;
@@ -30,6 +49,7 @@ namespace WebSite.Controllers
 
         public IActionResult Edit(string name)
         {
+            this.stringValidator.Validate(name);
             using (var db = new GameRatingsDbContext())
             {
                 db.Configuration.LazyLoadingEnabled = false;
@@ -44,76 +64,84 @@ namespace WebSite.Controllers
                             select gm).FirstOrDefault();
 
                 ViewData["img"] = "~/img/" + game.Name + ".jpg";
-                return View(game);
+
+                string developers = "";
+                int i = 0;
+                foreach (Developers dev in game.Developers)
+                {
+                    developers += dev.Name;
+                    if (i < game.Developers.Count - 1)
+                    {
+                        developers += ";";
+                    }
+                    i++;
+                }
+
+                string genres = "";
+                i = 0;
+                foreach (Genres gen in game.Genres)
+                {
+                    genres += gen.Name;
+                    if (i < game.Genres.Count - 1)
+                    {
+                        genres += ";";
+                    }
+                    i++;
+                }
+
+                //ViewData für datalists
+                List<string> devList = new List<string>();
+                foreach (Developers dev in db.Developer)
+                {
+                    devList.Add(dev.Name);
+                }
+
+                List<string> genreList = new List<string>();
+                foreach (Genres genre in db.Genre)
+                {
+                    genreList.Add(genre.Name);
+                }
+
+                List<string> platformList = new List<string>();
+                foreach (Platforms platform in db.Platform)
+                {
+                    platformList.Add(platform.Name);
+                }
+
+                List<string> publisherList = new List<string>();
+                foreach (Publishers publisher in db.Publisher)
+                {
+                    publisherList.Add(publisher.Name);
+                }
+
+                return View(new GamesViewModel
+                {
+                    Name = game.Name,
+                    Developers = developers,
+                    Genres = genres,
+                    Link = game.Link.Link,
+                    Publisher = game.Publisher.Name,
+                    Score = game.Rating.Score,
+                    Description = game.Description,
+                    DevList = devList,
+                    GenreList = genreList,
+                    PlatformList = platformList,
+                    PublisherList = publisherList
+                });
             }
         }
 
-        public IActionResult SaveChanges(string name, int score, string developers, string publisher, string genres, string description)
+        public IActionResult SaveChanges(GamesViewModel gamesModel)
         {
-            Validation(publisher);
-            Validation(developers);
-            Validation(description);
-            Validation(genres);
-            IList<string> devsList = developers.Split(';').ToList();
-            IList<string> genresList = genres.Split(';').ToList();
             using (var db = new GameRatingsDbContext())
             {
-                if (!db.Publisher.Any(p => p.Name == publisher))
-                {
-                    db.Publisher.Add(new Publishers(publisher));
-                }
-                foreach(string dev in devsList)
-                {
-                    if (!db.Developer.Any(d => d.Name == dev))
-                    {
-                        db.Developer.Add(new Developers(dev));
-                    }
-                }
-                foreach(string gen in genresList)
-                {
-                    if (!db.Genre.Any(g => g.Name == gen))
-                    {
-                        db.Genre.Add(new Genres(gen));
-                    }
-                }
-                db.SaveChanges();
-                var game = db.Games.SingleOrDefault(g => g.Name == name);
-                game.Rating_ID = (from scr in db.Rating
-                                where scr.Score == score
-                                select scr.ID).SingleOrDefault();
-                game.Publisher_ID = (from pub in db.Publisher
-                                     where pub.Name == publisher
-                                     select pub.ID).SingleOrDefault();
-                IList<Developers> newDevs = new List<Developers>();
-                foreach (string dev in devsList)
-                {
-                    newDevs.Add((from d in db.Developer
-                                 where d.Name == dev
-                                 select d).SingleOrDefault());
-                }
-                game.Developers.Clear();
-                game.Developers = newDevs;
-                IList<Genres> newGenres = new List<Genres>();
-                foreach (string gen in genresList)
-                {
-                    newGenres.Add((from g in db.Genre
-                                   where g.Name == gen
-                                   select g).SingleOrDefault());
-                }
-                game.Genres.Clear();
-                game.Genres = newGenres;
-                game.Description = description;
-                db.SaveChanges();
-            }
-            return RedirectToAction("Index", "GameDetails", new { name = name });
-        }
+                this.saverNewRecords.Save(gamesModel, db);
 
-        public void Validation(string input)
-        {
-            if (string.IsNullOrEmpty(input))
-            {
-                throw new ArgumentOutOfRangeException("Input must not be null or white space or empty.");
+                this.saverGames.Save(gamesModel, db);
+
+                return RedirectToAction("Index", "GameDetails", new { name = gamesModel.Name });
             }
+
         }
     }
 }

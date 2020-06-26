@@ -8,7 +8,8 @@
         <b>@Model.Rating.Score</b><br />
     </div>
     <div>
-        Developer:
+        <b>Developer</b>
+        <hr />
         @{
             int i = 0;
             foreach (var dev in Model.Developers)
@@ -21,10 +22,13 @@
                 i++;
             }
         }
-        <br />
-        Publisher: @Model.Publisher.Name
-        <br />
-        Genre:
+        <br /><br />
+        <b>Publisher</b>
+        <hr />
+        @Model.Publisher.Name
+        <br /><br />
+        <b>Genre</b>
+        <hr />
         @{ 
             i = 0;
             foreach (var gen in Model.Genres)
@@ -38,7 +42,10 @@
             }
         }
         <br /><br />
+        <b>Beschreibung</b>
+        <hr />
         @Model.Description
+        <br />
     </div>
     <div>
         <img src="@Url.Content(ViewData["img"].ToString())" runat="server" width="200" height="300"/>
