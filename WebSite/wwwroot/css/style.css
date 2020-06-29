@@ -66,3 +66,27 @@ a:hover {
     margin-left: 6%;
     margin-right: 6%;
 }
+
+.greytd {
+    background-color: lightgray;
+}
+
+.homeWrapper {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 2em;
+    margin: 20px;
+}
+
+.slide {
+    display: none;
+}
+
+.animateSlide {
+    position: relative;
+    animation: slideAnimation 0.8s;
+}
+
+@keyframes slideAnimation {
+    from { left: 200px; opacity: 0; } to { left: 0px; opacity: 1; }
+}

@@ -11,7 +11,7 @@ namespace WebSite.Savers
 {
     public class SaverNewGames : ISaverNewGames
     {
-        public void Save(NewGameViewModel game, GameRatingsDbContext db)
+        public void Save(GamesViewModel game, GameRatingsDbContext db)
         {
             foreach (string dev in game.Developers.Split(';'))
             {

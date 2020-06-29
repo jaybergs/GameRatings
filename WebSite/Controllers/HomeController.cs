@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Data.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Diagnostics;
 using WebSite.Models;
+using System.Linq;
 
 namespace WebSite.Controllers
 {
@@ -16,7 +19,18 @@ namespace WebSite.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            List<string> imgNames = new List<string>();
+            using (var db = new GameRatingsDbContext())
+            {
+
+                imgNames = (from gms in db.Games
+                            orderby gms.Rating_ID descending
+                            select gms.Name).ToList();
+
+                imgNames.RemoveRange(5, imgNames.Count() - 5);
+                            
+            }
+            return View(imgNames);
         }
 
         public IActionResult Privacy()

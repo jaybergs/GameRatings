@@ -1,4 +1,5 @@
 ﻿using Data.Models;
+using Microsoft.AspNetCore.Mvc.TagHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +43,16 @@ namespace WebSite.Savers
             }
             game.Genres.Clear();
             game.Genres = newGenres;
+
+            IList<Platforms> newPlatforms = new List<Platforms>();
+            foreach (string platform in gameModel.Platforms.Split(';'))
+            {
+                newPlatforms.Add((from p in db.Platform
+                                  where p.Name == platform
+                                  select p).SingleOrDefault());
+            }
+            game.Platforms.Clear();
+            game.Platforms = newPlatforms;
             game.Description = gameModel.Description;
             db.SaveChanges();
         }

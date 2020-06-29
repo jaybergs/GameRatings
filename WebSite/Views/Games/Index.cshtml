@@ -8,7 +8,7 @@
             <input type="text" size="20" name="search" value="@ViewData["search"].ToString()" />
             <input type="submit" value="search" />
         </p>
-        <table align="center" border="1" cellpadding="5">
+        <table align="center" border="1" style="border-color: gainsboro" cellpadding="5">
             <tr>
                 <th>
                     Name <button name="orderName" asp-controller="Games" asp-action="Index" value="nameasc">▲</button>
@@ -29,7 +29,7 @@
             {
                 int i = 0;
                 <tr>
-                    <td><a href="/GameDetails?name=@gms.Name">@gms.Name</a></td>
+                    <td class="greytd"><a href="/GameDetails?name=@gms.Name">@gms.Name</a></td>
                     <td>
                         @foreach (var gnr in gms.Genres)
                         {
@@ -41,7 +41,7 @@
                             i++;
                         }
                     </td>
-                    <td>
+                    <td class="greytd">
                         @{i = 0;
                         }
                         @foreach (var dev in gms.Developers)
@@ -55,7 +55,7 @@
                         }
                     </td>
                     <td><a href="/GameDetails/Edit?name=@gms.Name">@gms.Publisher.Name</a></td>
-                    <td><a href="/GameDetails/Edit?name=@gms.Name">@gms.Rating.Score</a></td>
+                    <td class="greytd"><a href="/GameDetails/Edit?name=@gms.Name">@gms.Rating.Score</a></td>
                 </tr>
             }
         </table>

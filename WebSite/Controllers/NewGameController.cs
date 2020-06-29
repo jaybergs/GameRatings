@@ -43,7 +43,7 @@ namespace WebSite.Controllers
             });
         }
 
-        public IActionResult Save(NewGameViewModel game)
+        public IActionResult Save(GamesViewModel game)
         {
             using (var db = new GameRatingsDbContext())
             {

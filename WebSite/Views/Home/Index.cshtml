@@ -1,7 +1,50 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model List<string>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to GameRatings.com</h1>
+
+
+<div class="homeWrapper">
+    <div>   
+            <h2>Home</h2>
+            <hr />
+            <br />
+                <justify>
+                    Rechts finden Sie eine Zusammenstellung der
+                    der fünf aktuell am besten bewertetsten Spiele.
+                    Klicken Sie auf das Bild um direkt auf die Seite
+                    des Spiels zu gelangen oder klicken Sie auf den Menüpunkt
+                    "Games", um Spiele zu suchen oder sich die gesamte Liste anzuschauen.
+                    Von dort gelangen Sie ebenfalls auf die Seite der Spiele und haben die
+                    Möglichkeit die Daten zu bearbeiten oder neue Spiele hinzuzufügen.
+                </justify>
+            <br />           
+    </div>
+    <div class="slideShow">
+        <h2>Spiele mit der besten Bewertung</h2>
+        <hr />
+        <br />
+        <a href="/GameDetails?name=@{@Model[0]}"><img src="~/img/@{@Model[0]}.jpg" class="slide animateSlide" width="300" height="500" /></a>
+        <a href="/GameDetails?name=@{@Model[1]}"><img src="~/img/@{@Model[1]}.jpg" class="slide animateSlide" width="300" height="500" /></a>
+        <a href="/GameDetails?name=@{@Model[2]}"><img src="~/img/@{@Model[2]}.jpg" class="slide animateSlide" width="300" height="500" /></a>
+        <a href="/GameDetails?name=@{@Model[3]}"><img src="~/img/@{@Model[3]}.jpg" class="slide animateSlide" width="300" height="500" /></a>
+        <a href="/GameDetails?name=@{@Model[4]}"><img src="~/img/@{@Model[4]}.jpg" class="slide animateSlide" width="300" height="500" /></a>
+    </div>
 </div>
+
+<script type="text/javascript">
+    var slideShow = function () {
+        var images = document.querySelectorAll(".slide");
+        var i;
+        for (i = 0; i < images.length; i++) {
+            images[i].setAttribute("style", "display: none")
+        }
+        count++;
+        if (count > images.length) {
+            count = 1;
+        }
+        images[count - 1].setAttribute("style", "display: block");
+        setTimeout(slideShow, 10000);
+    }
+
+    var count = 0;
+    slideShow();
+</script>

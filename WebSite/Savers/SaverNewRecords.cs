@@ -24,6 +24,14 @@ namespace WebSite.Savers
                 }
             }
 
+            foreach (string platform in gamesModel.Platforms.Split(';'))
+            {
+                if (!db.Platform.Any(p => p.Name == platform))
+                {
+                    db.Platform.Add(new Platforms(platform));
+                }
+            }
+
             if (!db.Publisher.Any(p => p.Name == gamesModel.Publisher))
             {
                 db.Publisher.Add(new Publishers(gamesModel.Publisher));
