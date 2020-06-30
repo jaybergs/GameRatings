@@ -1,9 +1,6 @@
 ﻿using Data.Models;
-using Microsoft.AspNetCore.Mvc.TagHelpers;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using WebSite.Models;
 
 namespace WebSite.Savers
@@ -30,7 +27,7 @@ namespace WebSite.Savers
                 newDevs.Add((from d in db.Developer
                              where d.Name == dev
                              select d).SingleOrDefault());
-            }            
+            }
             game.Developers.Clear();
             game.Developers = newDevs;
 

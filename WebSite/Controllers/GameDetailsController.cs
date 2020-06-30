@@ -1,7 +1,9 @@
 ﻿using Data.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using WebSite.Models;
 using WebSite.Savers;
@@ -124,7 +126,8 @@ namespace WebSite.Controllers
                             GenreList = genresList,
                             PlatformList = platformsList,
                             PublisherList = publishersList,
-                            Mode = 'e'
+                            PubYear = game.PubYear,
+                            Mode = Convert.ToChar("e")
                         });
                     }
 
@@ -215,6 +218,7 @@ namespace WebSite.Controllers
                             Score = game.Rating.Score,
                             Description = game.Description,
                             Platforms = platforms,
+                            PubYear = game.PubYear,
                             Mode = 'd'
                         });
                     }
@@ -223,29 +227,32 @@ namespace WebSite.Controllers
 
         }
 
-        public IActionResult SaveChanges()
+        public IActionResult SaveChanges(GamesViewModel gamesModel, [FromForm(Name = "imgFile")] IFormFile imgFile)
         {
             using (var db = new GameRatingsDbContext())
             {
-                if (gamesModel.Mode == 'e')
+                if (db.Games.Any(g => g.Name == gamesModel.Name))
                 {
                     this.saverNewRecords.Save(gamesModel, db);
 
                     this.saverGames.Save(gamesModel, db);
 
+                    if (imgFile != null)
+                    {
+                        imgFile.CopyTo(new FileStream(Path.Combine("../WebSite/img", gamesModel.Name + ".jpg"), FileMode.Create));
+                    }
+
                     return RedirectToAction("Index", "GameDetails", new { name = gamesModel.Name });
                 }
                 else
-                {
-                    if (db.Games.Any(g => g.Name == gamesModel.Name))
+                { 
+                    saverNewGames.Save(gamesModel, db);
+                    if (imgFile != null)
                     {
-                        return RedirectToAction("Index", "GameDetails", new { name = gamesModel.Name });
+                        imgFile.CopyTo(new FileStream(Path.Combine("../WebSite/img", gamesModel.Name + ".jpg"), FileMode.Create));
                     }
-                    else
-                    {
-                        saverNewGames.Save(gamesModel, db);
-                        return RedirectToAction("Index", "GameDetails", new { name = gamesModel.Name });
-                    }
+
+                    return RedirectToAction("Index", "GameDetails", new { name = gamesModel.Name });
                 }
 
             }

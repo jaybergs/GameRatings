@@ -1,180 +1,187 @@
 ﻿@model GamesViewModel
-
-<div class="wrapper">
-    <div>
+<form method="post" enctype="multipart/form-data">
+    <div class="wrapper">
+        <div>
             @{if (Model.Mode == 'd')
-                    {<h2>@Model.Name</h2>
-                    @Html.Raw(" ")
-                    @Model.PubYear} }
+                {<h2>@Model.Name</h2>
+                @Html.Raw(" ")
+                @Model.PubYear} }
             @{else
                 {<h2>@Html.TextBoxFor(m => m.Name)</h2>
                 @Html.TextBoxFor(m => m.PubYear)} }
-    </div>
-    <div class="score">
-        @{ if (Model.Mode == 'd')
-            {<b>@Model.Score</b>} }
-        @{else
-            {@Html.TextBoxFor(m => m.Score)} }<br />
-    </div>
-    <div>
-        <b>Developer</b>
-        <hr />
-        @{
-            if (Model.Mode == 'd')
-            {
-                int i = 0;
-                foreach (string dev in Model.Developers.Split(';'))
+        </div>
+        <div class="score">
+            @{ if (Model.Mode == 'd')
+                {<b>@Model.Score</b>} }
+            @{else
+                {@Html.TextBoxFor(m => m.Score)} }<br />
+        </div>
+        <div>
+            <b>Developer</b>
+            <hr />
+            @{
+                if (Model.Mode == 'd')
                 {
-                    @dev
-                    if (i < Model.Developers.Split(';').Count() - 1)
+                    int i = 0;
+                    foreach (string dev in Model.Developers.Split(';'))
                     {
-                        @Html.Raw(", ");
+                        @dev
+                        if (i < Model.Developers.Split(';').Count() - 1)
+                        {
+                            @Html.Raw(", ");
+                        }
+                        i++;
                     }
-                    i++;
+                }
+                else
+                {
+                    @Html.TextBoxFor(m => m.Developers, new { list = "devs" })
+                    <datalist id="devs">
+                        @foreach (string dev in Model.DevList)
+                        {
+                            <option>@dev</option>
+                        }
+                    </datalist>
                 }
             }
-            else
-            {
-                @Html.TextBoxFor(m => m.Developers, new { list = "devs" })
-                <datalist id="devs">
-                    @foreach (string dev in Model.DevList)
-                    {
-                        <option>@dev</option>
-                    }
-                </datalist>
-            }
-        }
 
-        <br /><br />
-        <b>Publisher</b>
-        <hr />
-        @{
-            if (Model.Mode == 'd')
-            {
-                @Model.Publisher
-            }
-            else
-            {
-                @Html.TextBoxFor(m => m.Publisher, new { list = "publishers" })
-                <datalist id="publishers">
-                    @foreach (string publisher in Model.PublisherList)
-                    {
-                        <option>@publisher</option>
-                    }
-                </datalist>
-            }
-        }
-
-        <br /><br />
-        <b>Genre</b>
-        <hr />
-        @{
-            if (Model.Mode == 'd')
-            {
-                int i = 0;
-                foreach (string gen in Model.Genres.Split(';'))
+            <br /><br />
+            <b>Publisher</b>
+            <hr />
+            @{
+                if (Model.Mode == 'd')
                 {
-                    @gen
-                    if (i < Model.Genres.Split(';').Count() - 1)
-                    {
-                        @Html.Raw(", ")
-                    }
-                    i++;
+                    @Model.Publisher
+                }
+                else
+                {
+                    @Html.TextBoxFor(m => m.Publisher, new { list = "publishers" })
+                    <datalist id="publishers">
+                        @foreach (string publisher in Model.PublisherList)
+                        {
+                            <option>@publisher</option>
+                        }
+                    </datalist>
                 }
             }
-            else
-            {
-                @Html.TextBoxFor(m => m.Genres, new { list = "genres" })
-                <datalist id="genres">
-                    @foreach (string genre in Model.GenreList)
-                    {
-                        <option>@genre</option>
-                    }
-                </datalist>
-            }
 
-        }
-        <br /><br />
-        <b>Platform</b>
-        <hr />
-        @{
-            if (Model.Mode == 'd')
-            {
-                int i = 0;
-                foreach (string platform in Model.Platforms.Split(';'))
+            <br /><br />
+            <b>Genre</b>
+            <hr />
+            @{
+                if (Model.Mode == 'd')
                 {
-                    @platform
-                    if (i < Model.Platforms.Split(';').Count() - 1)
+                    int i = 0;
+                    foreach (string gen in Model.Genres.Split(';'))
                     {
-                        @Html.Raw(", ")
+                        @gen
+                        if (i < Model.Genres.Split(';').Count() - 1)
+                        {
+                            @Html.Raw(", ")
+                        }
+                        i++;
                     }
-                    i++;
+                }
+                else
+                {
+                    @Html.TextBoxFor(m => m.Genres, new { list = "genres" })
+                    <datalist id="genres">
+                        @foreach (string genre in Model.GenreList)
+                        {
+                            <option>@genre</option>
+                        }
+                    </datalist>
+                }
+
+            }
+            <br /><br />
+            <b>Platform</b>
+            <hr />
+            @{
+                if (Model.Mode == 'd')
+                {
+                    int i = 0;
+                    foreach (string platform in Model.Platforms.Split(';'))
+                    {
+                        @platform
+                        if (i < Model.Platforms.Split(';').Count() - 1)
+                        {
+                            @Html.Raw(", ")
+                        }
+                        i++;
+                    }
+                }
+                else
+                {
+                    @Html.TextBoxFor(m => m.Platforms, new { list = "platforms" })
+                    <datalist id="platforms">
+                        @foreach (string platform in Model.PlatformList)
+                        {
+                            <option>@platform</option>
+                        }
+                    </datalist>
+                }
+
+            }
+            <br /><br />
+            <b>Beschreibung</b>
+            <hr />
+            @{
+                if (Model.Mode == 'd')
+                {
+                    @Model.Description
+                }
+                else
+                {
+                    @Html.TextAreaFor(m => m.Description, new { maxlength = "800", style = "width:500px; height:150px" })
                 }
             }
-            else
-            {
-                @Html.TextBoxFor(m => m.Platforms, new { list = "platforms" })
-                <datalist id="platforms">
-                    @foreach (string platform in Model.PlatformList)
-                    {
-                        <option>@platform</option>
-                    }
-                </datalist>
+
+            <br />
+        </div>
+        <div>
+            @{
+                if (Model.Mode == 'd')
+                {
+                    <img src="@Url.Content(ViewData["img"].ToString())" runat="server" width="200" height="300" />
+                }
+                else
+                {
+                    <b>Bild</b>
+                    <hr />
+                    <input type="file" name="imgFile" accept="image/jpeg" />
+                }
             }
 
-        }
-        <br /><br />
-        <b>Beschreibung</b>
-        <hr />
-        @{
-            if (Model.Mode == 'd')
-            {
-                @Model.Description
+        </div>
+        <div>
+            @{
+                if (Model.Mode == 'd')
+                {
+                    <a href="@Model.Link">Mehr Informationen</a>
+                }
+                else
+                {
+                    <b>Link</b>
+                    <hr />
+                    @Html.TextBoxFor(m => m.Link, new { size = "40" })
+                }
             }
-            else
-            {
-                @Html.TextAreaFor(m => m.Description, new { maxlength = "800", style = "width:500px; height:150px" })
-            }
-        }
 
-        <br />
+        </div>
+        <div>
+            @{
+                if (Model.Mode == 'd')
+                {
+                    <a href="GameDetails?name=@Model.Name&mode=edit">Edit</a>
+                    <a href="GameDetails?name=&mode=new">New</a>
+                }
+                else
+                {
+                    @Html.HiddenFor(m => m.Mode)
+                    <Button name="saveChanges" asp-controller="GameDetails" asp-action="SaveChanges">Änderungen speichern</Button>
+                }
+            }
+        </div>
     </div>
-    <div>
-        @{
-            if (Model.Mode == 'd')
-            {
-                <img src="@Url.Content(ViewData["img"].ToString())" runat="server" width="200" height="300" />
-            }
-        }
-
-    </div>
-    <div>
-        @{
-            if (Model.Mode == 'd')
-            {
-                <a href="@Model.Link">Mehr Informationen</a>
-            }
-            else
-            {
-                <b>Link</b>
-                <hr />
-                @Html.TextBoxFor(m => m.Link, new { size="40" });
-            }
-        }
-
-    </div>
-    <div>
-        @{
-            if (Model.Mode == 'd')
-            {
-                <a href="GameDetails?name=@Model.Name&mode=edit">Edit</a>
-                <a href="GameDetails?name=&mode=new">New</a>
-            }
-            else
-            {
-                <Button name="saveChanges" asp-controller="GameDetails" asp-action="SaveChanges">Änderungen speichern</Button>
-            }
-        }
-
-    </div>
-</div>
+</form>
