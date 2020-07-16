@@ -13,30 +13,30 @@
             <hr />
             @Html.TextBoxFor(m => m.Developers, new { list = "devs" }) (Einträge durch ';' trennen)
             <datalist id="devs">
-                @foreach (string dev in Model.DevList)
+                @*@foreach (string dev in Model.DevList)
                 {
                     <option>@dev</option>
-                }
+                }*@
             </datalist>
             <br /><br />
             <b>Publisher</b>
             <hr />
             @Html.TextBoxFor(m => m.Publisher, new { list = "publishers"})
             <datalist id="publishers">
-                @foreach (string publisher in Model.PublisherList)
+                @*@foreach (string publisher in Model.PublisherList)
                 {
                     <option>@publisher</option>
-                }
+                }*@
             </datalist>
             <br /><br />
             <b>Genre</b>
             <hr />
             @Html.TextBoxFor(m => m.Genres, new { list = "genres"}) (Einträge durch ';' trennen)
             <datalist id="genres">
-                @foreach (string genre in Model.GenreList)
+                @*@foreach (string genre in Model.GenreList)
                 {
                     <option>@genre</option>
-                }
+                }*@
             </datalist>
             <br /><br />
             <b>Beschreibung</b>

@@ -5,6 +5,7 @@ namespace WebSite.Models
 {
     public class GamesViewModel
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Publisher { get; set; }
         public string Developers { get; set; }

@@ -2,6 +2,7 @@
 <form method="post" enctype="multipart/form-data">
     <div class="wrapper">
         <div>
+            <input type="hidden" value="@Model.Id" name="Id" />
             @{if (Model.Mode == 'd')
                 {<h2>@Model.Name</h2>
                 @Html.Raw(" ")
@@ -178,8 +179,10 @@
                 }
                 else
                 {
-                    @Html.HiddenFor(m => m.Mode)
-                    <Button name="saveChanges" asp-controller="GameDetails" asp-action="SaveChanges">Änderungen speichern</Button>
+                    <input type="hidden" value="@Model.Mode" name="Mode"/>
+                    <Button name="delete" asp-controller="GameDetails" asp-action="Delete" onclick="return confirm('Wirklick löschen?');" 
+                            class="deleteButton">Delete</Button>
+                    <Button name="saveChanges" asp-controller="GameDetails" asp-action="SaveChanges" class="saveButton">Save</Button>
                 }
             }
         </div>

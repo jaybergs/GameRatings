@@ -5,31 +5,34 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using WebSite.Models;
 using System.Linq;
+using System.Net.Http;
+using WebSite.HTTP;
+using System;
+using System.Threading.Tasks;
 
 namespace WebSite.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IClientList<List<Games>> client;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IClientList<List<Games>> client)
         {
             _logger = logger;
+            this.client = client ?? throw new ArgumentNullException(nameof(client));
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             List<string> imgNames = new List<string>();
-            using (var db = new GameRatingsDbContext())
+            List<Games> games = await client.GetHighestAsync(5);
+
+            foreach(Games game in games)
             {
-
-                imgNames = (from gms in db.Games
-                            orderby gms.Rating_ID descending
-                            select gms.Name).ToList();
-
-                imgNames.RemoveRange(5, imgNames.Count() - 5);
-                            
+                imgNames.Add(game.Name);
             }
+
             return View(imgNames);
         }
 

@@ -84,8 +84,6 @@ C:\Users\la-jbergs\source\repos\GameRatings\WebSite\bin\Debug\netcoreapp3.1\Data
 C:\Users\la-jbergs\source\repos\GameRatings\WebSite\obj\Debug\netcoreapp3.1\WebSite.csprojAssemblyReference.cache
 C:\Users\la-jbergs\source\repos\GameRatings\WebSite\obj\Debug\netcoreapp3.1\WebSite.AssemblyInfoInputs.cache
 C:\Users\la-jbergs\source\repos\GameRatings\WebSite\obj\Debug\netcoreapp3.1\WebSite.AssemblyInfo.cs
-C:\Users\la-jbergs\source\repos\GameRatings\WebSite\obj\Debug\netcoreapp3.1\WebSite.csproj.CoreCompileInputs.cache
-C:\Users\la-jbergs\source\repos\GameRatings\WebSite\obj\Debug\netcoreapp3.1\WebSite.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\la-jbergs\source\repos\GameRatings\WebSite\obj\Debug\netcoreapp3.1\WebSite.RazorAssemblyInfo.cache
 C:\Users\la-jbergs\source\repos\GameRatings\WebSite\obj\Debug\netcoreapp3.1\WebSite.RazorAssemblyInfo.cs
 C:\Users\la-jbergs\source\repos\GameRatings\WebSite\obj\Debug\netcoreapp3.1\WebSite.TagHelpers.input.cache
@@ -109,3 +107,6 @@ C:\Users\la-jbergs\source\repos\GameRatings\WebSite\obj\Debug\netcoreapp3.1\WebS
 C:\Users\la-jbergs\source\repos\GameRatings\WebSite\obj\Debug\netcoreapp3.1\Razor\Views\GameDetails\Index.cshtml.g.cs
 C:\Users\la-jbergs\source\repos\GameRatings\WebSite\obj\Debug\netcoreapp3.1\Razor\Views\GameDetails\Edit.cshtml.g.cs
 C:\Users\la-jbergs\source\repos\GameRatings\WebSite\obj\Debug\netcoreapp3.1\Razor\Views\NewGame\Index.cshtml.g.cs
+C:\Users\la-jbergs\source\repos\GameRatings\WebSite\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\la-jbergs\source\repos\GameRatings\WebSite\obj\Debug\netcoreapp3.1\WebSite.csproj.CoreCompileInputs.cache
+C:\Users\la-jbergs\source\repos\GameRatings\WebSite\obj\Debug\netcoreapp3.1\WebSite.MvcApplicationPartsAssemblyInfo.cache

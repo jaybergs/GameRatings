@@ -1,9 +1,13 @@
+using Data.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.Configuration;
+using System;
+using System.Collections.Generic;
+using System.Net.Http.Headers;
+using WebSite.HTTP;
 using WebSite.Savers;
 using WebSite.Searchers;
 using WebSite.Validators;
@@ -22,6 +26,18 @@ namespace WebSite
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpClient<IClient<Games>, Client>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:443/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            });
+            services.AddHttpClient<IClientList<List<Games>>, ClientList>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:443/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            });
             services.AddControllersWithViews();
             services.AddTransient<IBaseValidator, BaseValidator>();
             services.AddTransient<ISaverNewRecords, SaverNewRecords>();

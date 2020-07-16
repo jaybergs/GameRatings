@@ -1,6 +1,5 @@
 ﻿@model IList<Data.Models.Games>
 
-<h1 align="center">GameRatings</h1>
 <br />
 <div class="gamelist">
     <form action="" method="post">
@@ -8,7 +7,7 @@
             <input type="text" size="20" name="search" value="@ViewData["search"].ToString()" />
             <input type="submit" value="search" />
         </p>
-        <table align="center" border="1" style="border-color: gainsboro" cellpadding="5">
+        <table align="center" border="1" style="border-color: gainsboro" cellpadding="5" width="100%">
             <tr>
                 <th>
                     Name <button name="orderName" asp-controller="Games" asp-action="Index" value="nameasc">▲</button>
@@ -59,5 +58,9 @@
                 </tr>
             }
         </table>
+        <div align="right">
+            <button><a href="/GameDetails?name=&mode=new">New</a></button>
+        </div>
+
     </form>
 </div>
