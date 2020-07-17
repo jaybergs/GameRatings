@@ -21,7 +21,7 @@ using WebSite;
 #nullable disable
 #nullable restore
 #line 2 "C:\Users\la-jbergs\source\repos\GameRatings\WebSite\Views\_ViewImports.cshtml"
-using WebSite.Models;
+using WebSite.ViewModels;
 
 #line default
 #line hidden

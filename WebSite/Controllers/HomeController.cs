@@ -1,14 +1,12 @@
-﻿using Data.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using WebSite.Models;
-using System.Linq;
-using System.Net.Http;
-using WebSite.HTTP;
-using System;
 using System.Threading.Tasks;
+using WebSite.HTTP;
+using WebSite.Models;
+using WebSite.ViewModels;
 
 namespace WebSite.Controllers
 {
@@ -28,7 +26,7 @@ namespace WebSite.Controllers
             List<string> imgNames = new List<string>();
             List<Games> games = await client.GetHighestAsync(5);
 
-            foreach(Games game in games)
+            foreach (Games game in games)
             {
                 imgNames.Add(game.Name);
             }

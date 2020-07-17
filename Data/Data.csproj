@@ -125,11 +125,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Utilities\Searcher.cs" />
-    <Compile Include="Interfaces\IGameRatingsContext.cs" />
-    <Compile Include="Interfaces\ISearcher.cs" />
     <Compile Include="Models\Developers.cs" />
-    <Compile Include="Models\GameRatingsDbContext.cs" />
     <Compile Include="Models\Games.cs" />
     <Compile Include="Models\Genres.cs" />
     <Compile Include="Models\Links.cs" />

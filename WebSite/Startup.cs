@@ -1,4 +1,4 @@
-using Data.Models;
+using WebSite.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -8,8 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using WebSite.HTTP;
-using WebSite.Savers;
-using WebSite.Searchers;
 using WebSite.Validators;
 
 namespace WebSite
@@ -40,10 +38,6 @@ namespace WebSite
             });
             services.AddControllersWithViews();
             services.AddTransient<IBaseValidator, BaseValidator>();
-            services.AddTransient<ISaverNewRecords, SaverNewRecords>();
-            services.AddTransient<ISaverGames, SaverGames>();
-            services.AddTransient<ISaverNewGames, SaverNewGames>();
-            services.AddTransient<ISearcherAllRecords, SearcherAllRecords>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

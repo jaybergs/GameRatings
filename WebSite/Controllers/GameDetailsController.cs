@@ -1,4 +1,4 @@
-﻿using Data.Models;
+﻿using WebSite.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -6,9 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using WebSite.HTTP;
-using WebSite.Models;
-using WebSite.Savers;
-using WebSite.Searchers;
+using WebSite.ViewModels;
 using WebSite.Validators;
 
 namespace WebSite.Controllers
@@ -18,8 +16,7 @@ namespace WebSite.Controllers
         private readonly IBaseValidator stringValidator;
         private readonly IClient<Games> client;
 
-        public GameDetailsController(IBaseValidator stringValidator, ISaverNewRecords saverNewRecords, ISaverGames saverGames,
-            ISearcherAllRecords searcherAllRecords, ISaverNewGames saverNewGames, IClient<Games> client)
+        public GameDetailsController(IBaseValidator stringValidator, IClient<Games> client)
         {
             this.stringValidator = stringValidator ?? throw new ArgumentNullException(nameof(stringValidator));
             this.client = client ?? throw new ArgumentNullException(nameof(client));

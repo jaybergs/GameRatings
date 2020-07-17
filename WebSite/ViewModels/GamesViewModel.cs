@@ -1,7 +1,7 @@
 ﻿
 using System.Collections.Generic;
 
-namespace WebSite.Models
+namespace WebSite.ViewModels
 {
     public class GamesViewModel
     {
